@@ -3,7 +3,7 @@ export interface PlaceResponse {
 }
 
 export interface Place {
-    id: number|string;
+    // id: number|string;
     name:         string;
     description:  string;
     category:     string;

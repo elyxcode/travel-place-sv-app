@@ -16,6 +16,7 @@ import { placeholderImagePath } from "@/components/PlaceCard";
 
 import { Place } from "@/interfaces/place";
 
+import { CategoryTag } from "@/components/CategoryTag";
 import { places } from "@/data/data";
 import { colors } from "@/styles/colors";
 
@@ -31,6 +32,7 @@ export default function PlaceDetails() {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.imageContainer}>
+        <CategoryTag category={place?.category ?? ""} positionOposition />
         {!errorImage ? (
           <Image
             source={{
@@ -77,11 +79,11 @@ const styles = StyleSheet.create({
     paddingVertical: 25,
   },
   imageContainer: {
-    height: 150,
+    height: 200,
     width: "100%",
   },
   image: {
-    height: 175,
+    height: 200,
     width: "100%",
     resizeMode: "cover",
   },

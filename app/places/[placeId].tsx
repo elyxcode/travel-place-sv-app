@@ -16,6 +16,7 @@ import { placeholderImagePath } from "@/components/PlaceCard";
 
 import { Place } from "@/interfaces/place";
 
+import { BackButton } from "@/components/BackButton";
 import { CategoryTag } from "@/components/CategoryTag";
 import { places } from "@/data/data";
 import { colors } from "@/styles/colors";
@@ -32,6 +33,7 @@ export default function PlaceDetails() {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.imageContainer}>
+        <BackButton />
         <CategoryTag category={place?.category ?? ""} positionOposition />
         {!errorImage ? (
           <Image

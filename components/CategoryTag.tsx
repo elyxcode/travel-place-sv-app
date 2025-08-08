@@ -4,7 +4,7 @@ import { StyleProp, StyleSheet, Text, View, ViewStyle } from "react-native";
 interface Props {
   category: string;
   extraStyles?: StyleProp<ViewStyle>;
-  positionOposition: boolean;
+  positionOposition?: boolean;
 }
 
 export const CategoryTag = ({

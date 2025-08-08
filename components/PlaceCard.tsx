@@ -1,7 +1,8 @@
-import { Image, StyleSheet, View } from "react-native";
+import { Image, Pressable, StyleSheet, View } from "react-native";
 
 import { Place } from "@/interfaces/place";
 import { colors } from "@/styles/colors";
+import { router } from "expo-router";
 import { useState } from "react";
 import { CategoryTag } from "./CategoryTag";
 import { DecriptionSection } from "./DecriptionSection";
@@ -10,29 +11,42 @@ interface Props {
   place: Place;
 }
 
-const placeholderImagePath = require("../assets/images/placeholder-image.png");
+export const placeholderImagePath = require("../assets/images/placeholder-image.png");
 
 export const PlaceCard = ({ place }: Props) => {
   const [errorImage, setErrorImage] = useState(false);
-  return (
-    <View style={styles.cardShadow}>
-      <View style={styles.cardContainer}>
-        <CategoryTag category={place.category} />
-        {!errorImage ? (
-          <Image
-            source={{
-              uri: place.images[0],
-            }}
-            onError={() => setErrorImage(true)}
-            style={styles.image}
-          />
-        ) : (
-          <Image source={placeholderImagePath} style={styles.image} />
-        )}
 
-        <DecriptionSection name={place.name} description={place.description} />
+  return (
+    <Pressable
+      onPress={() =>
+        router.navigate({
+          pathname: "/places/[placeId]",
+          params: { placeId: place.name },
+        })
+      }
+    >
+      <View style={styles.cardShadow}>
+        <View style={styles.cardContainer}>
+          <CategoryTag category={place.category} />
+          {!errorImage ? (
+            <Image
+              source={{
+                uri: place.images[0],
+              }}
+              onError={() => setErrorImage(true)}
+              style={styles.image}
+            />
+          ) : (
+            <Image source={placeholderImagePath} style={styles.image} />
+          )}
+
+          <DecriptionSection
+            name={place.name}
+            description={place.description}
+          />
+        </View>
       </View>
-    </View>
+    </Pressable>
   );
 };
 

@@ -3,14 +3,15 @@ export interface PlaceResponse {
 }
 
 export interface Place {
+    id: number|string;
     name:         string;
     description:  string;
     category:     string;
     location:     Location;
     images:       string[];
-    externalLink: string;
+    externalLink: string|null;
     payRequired:  boolean;
-    initialPrice: string;
+    initialPrice: string|number;
 }
 
 export interface Location {

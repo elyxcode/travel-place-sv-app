@@ -5,7 +5,7 @@ import { colors } from "@/styles/colors";
 import { router } from "expo-router";
 import { useState } from "react";
 import { CategoryTag } from "./CategoryTag";
-import { DecriptionSection } from "./DecriptionSection";
+import { DecriptionCard } from "./DecriptionCard";
 
 interface Props {
   place: Place;
@@ -40,10 +40,7 @@ export const PlaceCard = ({ place }: Props) => {
             <Image source={placeholderImagePath} style={styles.image} />
           )}
 
-          <DecriptionSection
-            name={place.name}
-            description={place.description}
-          />
+          <DecriptionCard name={place.name} description={place.description} />
         </View>
       </View>
     </Pressable>

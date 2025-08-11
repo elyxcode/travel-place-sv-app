@@ -1,15 +1,6 @@
 import { useLocalSearchParams } from "expo-router";
 import { useEffect, useRef, useState } from "react";
-import {
-  Animated,
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
-
-import Feather from "@expo/vector-icons/Feather";
+import { Animated, Image, ScrollView, StyleSheet, View } from "react-native";
 
 import { BackButton } from "@/components/BackButton";
 import { CategoryTag } from "@/components/CategoryTag";
@@ -22,7 +13,7 @@ import { Place } from "@/interfaces/place";
 import { places } from "@/data/data";
 
 import { DescriptionSection } from "@/components/DescriptionSection";
-import { colors } from "@/styles/colors";
+import { TitleSection } from "@/components/TitleSection";
 
 const images = [
   "https://images.pexels.com/photos/13268478/pexels-photo-13268478.jpeg",
@@ -68,13 +59,7 @@ export default function PlaceDetails() {
           )}
         </View>
         <View style={styles.placeDataContainer}>
-          <View style={styles.titleContainer}>
-            <Text style={styles.titleText}>{place?.name}</Text>
-            <View style={styles.locationContainer}>
-              <Feather name="map-pin" size={20} color="gray" />
-              <Text style={styles.locationText}>El Salvador</Text>
-            </View>
-          </View>
+          <TitleSection place={place!} />
           <DescriptionSection place={place} />
           <GallerySection images={images} />
           {place?.externalLink && (
@@ -103,24 +88,5 @@ const styles = StyleSheet.create({
   placeDataContainer: {
     paddingTop: 15,
     paddingHorizontal: 15,
-  },
-  titleContainer: {
-    paddingBottom: 10,
-    fontFamily: "Inter_700Bold",
-  },
-  titleText: {
-    fontWeight: "bold",
-    fontSize: 15,
-    color: colors.Black,
-  },
-  locationContainer: {
-    marginVertical: 15,
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 10,
-  },
-  locationText: {
-    fontFamily: "Inter_400Regular",
-    color: colors.LocationTextColor,
   },
 });

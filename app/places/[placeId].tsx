@@ -1,18 +1,16 @@
 import { useLocalSearchParams } from "expo-router";
-import { useEffect, useRef, useState } from "react";
-import { Animated, Image, ScrollView, StyleSheet, View } from "react-native";
+import { useEffect, useRef } from "react";
+import { Animated, ScrollView, StyleSheet, View } from "react-native";
 
-import { BackButton } from "@/components/BackButton";
-import { CategoryTag } from "@/components/CategoryTag";
 import { ExternalLinkButton } from "@/components/ExternalLinkButton";
 import { GallerySection } from "@/components/GallerySection";
-import { placeholderImagePath } from "@/components/PlaceCard";
 
 import { Place } from "@/interfaces/place";
 
 import { places } from "@/data/data";
 
 import { DescriptionSection } from "@/components/DescriptionSection";
+import { HeaderImageSection } from "@/components/HeaderImageSection";
 import { TitleSection } from "@/components/TitleSection";
 
 const images = [
@@ -36,28 +34,12 @@ export default function PlaceDetails() {
     }).start();
   });
 
-  const [errorImage, setErrorImage] = useState(false);
-
   const place: Place | undefined = places.find((p) => p.name === placeId);
 
   return (
     <Animated.View style={{ flex: 1, opacity: fadeAnim }}>
       <ScrollView style={styles.container}>
-        <View style={styles.imageContainer}>
-          <BackButton />
-          <CategoryTag category={place?.category ?? ""} positionOposition />
-          {!errorImage ? (
-            <Image
-              source={{
-                uri: place?.images[0],
-              }}
-              onError={() => setErrorImage(true)}
-              style={styles.image}
-            />
-          ) : (
-            <Image source={placeholderImagePath} style={styles.image} />
-          )}
-        </View>
+        <HeaderImageSection place={place!} />
         <View style={styles.placeDataContainer}>
           <TitleSection place={place!} />
           <DescriptionSection place={place} />
@@ -76,15 +58,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingVertical: 25,
   },
-  imageContainer: {
-    height: 200,
-    width: "100%",
-  },
-  image: {
-    height: 200,
-    width: "100%",
-    resizeMode: "cover",
-  },
+
   placeDataContainer: {
     paddingTop: 15,
     paddingHorizontal: 15,

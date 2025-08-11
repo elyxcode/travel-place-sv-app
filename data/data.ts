@@ -161,7 +161,8 @@ import { Place } from "@/interfaces/place";
       "category": "playa",
       "location": {
         "lat": 13.4925,
-        "lng": -89.3809
+        "lng": -89.3809,
+        title: "La Libertad, El Salvador"
       },
       "images": [
         "https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6",
@@ -176,6 +177,7 @@ import { Place } from "@/interfaces/place";
       "description": "Volcán activo con cráter turquesa en la cima.",
       "category": "montaña",
       "location": {
+        title: "Santa Ana, El Salvador",
         "lat": 13.8530,
         "lng": -89.6299
       },
@@ -192,7 +194,8 @@ import { Place } from "@/interfaces/place";
       "category": "historico",
       "location": {
         "lat": 13.8216,
-        "lng": -89.3607
+        "lng": -89.3607,
+        title: "San Salvador, El Salvador"
       },
       "images": [
         "https://images.unsplash.com/photo-1564501049416-2a5e7b7e0e9f"
@@ -207,7 +210,8 @@ import { Place } from "@/interfaces/place";
       "category": "lago",
       "location": {
         "lat": 13.8642,
-        "lng": -89.5452
+        "lng": -89.5452,
+        title: "San Salvador, El Salvador"
       },
       "images": [
         "https://images.unsplash.com/photo-1501785888041-af3ef285b470"
@@ -222,7 +226,8 @@ import { Place } from "@/interfaces/place";
       "category": "ruta",
       "location": {
         "lat": 13.8767,
-        "lng": -89.7360
+        "lng": -89.7360,
+        title: "San Salvador, El Salvador"
       },
       "images": [
         "https://images.unsplash.com/photo-1464037866556-6812c9d1c72e"
@@ -237,7 +242,8 @@ import { Place } from "@/interfaces/place";
       "category": "naturaleza",
       "location": {
         "lat": 13.8500,
-        "lng": -89.9333
+        "lng": -89.9333,
+        title: "San Salvador, El Salvador"
       },
       "images": [
         "https://images.unsplash.com/photo-1470114716159-e389f8712fda"
@@ -252,7 +258,8 @@ import { Place } from "@/interfaces/place";
       "category": "ciudad",
       "location": {
         "lat": 13.9386,
-        "lng": -89.0278
+        "lng": -89.0278,
+        title: "San Salvador, El Salvador"
       },
       "images": [
         "https://images.unsplash.com/photo-1518391846015-55a9cc003b25"
@@ -267,7 +274,8 @@ import { Place } from "@/interfaces/place";
       "category": "playa",
       "location": {
         "lat": 13.1286,
-        "lng": -88.2447
+        "lng": -88.2447,
+        title: "San Salvador, El Salvador"
       },
       "images": [
         "https://images.unsplash.com/photo-1506929562872-bb421503ef21"
@@ -282,7 +290,8 @@ import { Place } from "@/interfaces/place";
       "category": "montaña",
       "location": {
         "lat": 13.8275,
-        "lng": -89.6236
+        "lng": -89.6236,
+        title: "San Salvador, El Salvador"
       },
       "images": [
         "https://images.unsplash.com/photo-1452570053594-1b985d6ea890"
@@ -297,7 +306,8 @@ import { Place } from "@/interfaces/place";
       "category": "historico",
       "location": {
         "lat": 13.9767,
-        "lng": -89.6736
+        "lng": -89.6736,
+        title: "San Salvador, El Salvador"
       },
       "images": [
         "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5"

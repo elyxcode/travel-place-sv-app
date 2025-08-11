@@ -77,7 +77,9 @@ export default function PlaceDetails() {
           </View>
           <DescriptionSection place={place} />
           <GallerySection images={images} />
-          <ExternalLinkButton />
+          {place?.externalLink && (
+            <ExternalLinkButton uri={place?.externalLink} />
+          )}
         </View>
       </ScrollView>
     </Animated.View>

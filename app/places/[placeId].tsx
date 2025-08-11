@@ -1,6 +1,13 @@
 import { useLocalSearchParams } from "expo-router";
-import { useState } from "react";
-import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import { useEffect, useRef, useState } from "react";
+import {
+  Animated,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 
 import Feather from "@expo/vector-icons/Feather";
 
@@ -28,40 +35,52 @@ export default function PlaceDetails() {
     placeId: string;
   }>();
 
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 500,
+      useNativeDriver: true,
+    }).start();
+  });
+
   const [errorImage, setErrorImage] = useState(false);
 
   const place: Place | undefined = places.find((p) => p.name === placeId);
 
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.imageContainer}>
-        <BackButton />
-        <CategoryTag category={place?.category ?? ""} positionOposition />
-        {!errorImage ? (
-          <Image
-            source={{
-              uri: place?.images[0],
-            }}
-            onError={() => setErrorImage(true)}
-            style={styles.image}
-          />
-        ) : (
-          <Image source={placeholderImagePath} style={styles.image} />
-        )}
-      </View>
-      <View style={styles.placeDataContainer}>
-        <View style={styles.titleContainer}>
-          <Text style={styles.titleText}>{place?.name}</Text>
-          <View style={styles.locationContainer}>
-            <Feather name="map-pin" size={20} color="gray" />
-            <Text style={styles.locationText}>El Salvador</Text>
-          </View>
+    <Animated.View style={{ flex: 1, opacity: fadeAnim }}>
+      <ScrollView style={styles.container}>
+        <View style={styles.imageContainer}>
+          <BackButton />
+          <CategoryTag category={place?.category ?? ""} positionOposition />
+          {!errorImage ? (
+            <Image
+              source={{
+                uri: place?.images[0],
+              }}
+              onError={() => setErrorImage(true)}
+              style={styles.image}
+            />
+          ) : (
+            <Image source={placeholderImagePath} style={styles.image} />
+          )}
         </View>
-        <DescriptionSection place={place} />
-        <GallerySection images={images} />
-        <ExternalLinkButton />
-      </View>
-    </ScrollView>
+        <View style={styles.placeDataContainer}>
+          <View style={styles.titleContainer}>
+            <Text style={styles.titleText}>{place?.name}</Text>
+            <View style={styles.locationContainer}>
+              <Feather name="map-pin" size={20} color="gray" />
+              <Text style={styles.locationText}>El Salvador</Text>
+            </View>
+          </View>
+          <DescriptionSection place={place} />
+          <GallerySection images={images} />
+          <ExternalLinkButton />
+        </View>
+      </ScrollView>
+    </Animated.View>
   );
 }
 

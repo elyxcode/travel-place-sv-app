@@ -1,5 +1,6 @@
 import { FlatList, SafeAreaView, StyleSheet, View } from "react-native";
 
+import { HeaderList } from "@/components/HeaderList";
 import { PlaceCard } from "@/components/PlaceCard";
 import { places } from "@/data/data";
 import { colors } from "@/styles/colors";
@@ -10,10 +11,6 @@ const Separator = () => {
 
 const Footer = () => {
   return <View />;
-};
-
-const Header = () => {
-  return <View style={styles.separator} />;
 };
 
 export default function Index() {
@@ -27,8 +24,7 @@ export default function Index() {
         ItemSeparatorComponent={Separator}
         ListFooterComponent={Footer}
         ListFooterComponentStyle={{ height: 25 }}
-        ListHeaderComponent={Header}
-        ListHeaderComponentStyle={{ height: 25 }}
+        ListHeaderComponent={HeaderList}
       />
     </SafeAreaView>
   );

@@ -2,15 +2,32 @@ import { Place } from "@/interfaces/place";
 import { colors } from "@/styles/colors";
 import { StyleSheet, Text, View } from "react-native";
 
+import { Inter_400Regular } from "@expo-google-fonts/inter/400Regular";
+import { Inter_700Bold } from "@expo-google-fonts/inter/700Bold";
+import { useFonts } from "@expo-google-fonts/inter/useFonts";
+
 interface Props {
   place?: Place;
 }
 
 export const DescriptionSection = ({ place }: Props) => {
+  let [fontsLoaded] = useFonts({
+    Inter_400Regular,
+    Inter_700Bold,
+  });
+
+  if (!fontsLoaded) return null;
+
   return (
     <View style={styles.descriptionContainer}>
-      <Text style={styles.descriptionLabel}>Descripción</Text>
-      <Text style={styles.descriptionText}>{place?.description}</Text>
+      <Text style={[styles.descriptionLabel, { fontFamily: "Inter_700Bold" }]}>
+        Descripción
+      </Text>
+      <Text
+        style={[styles.descriptionText, { fontFamily: "Inter_400Regular" }]}
+      >
+        {place?.description}
+      </Text>
     </View>
   );
 };
@@ -21,13 +38,10 @@ const styles = StyleSheet.create({
   },
   descriptionLabel: {
     paddingBottom: 10,
-    fontWeight: "bold",
-    fontSize: 20,
-    fontFamily: "Inter_700Bold",
+    fontSize: 18,
     color: colors.Black,
   },
   descriptionText: {
-    fontFamily: "Inter_400Regular",
     color: colors.DescriptionColor,
     fontSize: 14,
   },

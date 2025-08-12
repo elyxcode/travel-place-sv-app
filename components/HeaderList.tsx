@@ -10,7 +10,7 @@ export const HeaderList = () => {
     Inter_900Black,
   });
 
-  if (!fontsLoaded) return <Text>NO se cargo</Text>;
+  if (!fontsLoaded) return null;
 
   return (
     <View style={styles.headerContainer}>

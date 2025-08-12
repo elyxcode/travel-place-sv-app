@@ -4,17 +4,32 @@ import Feather from "@expo/vector-icons/Feather";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
+import { Inter_400Regular } from "@expo-google-fonts/inter/400Regular";
+import { Inter_700Bold } from "@expo-google-fonts/inter/700Bold";
+import { useFonts } from "@expo-google-fonts/inter/useFonts";
+
 interface Props {
   place: Place;
 }
 
 export const TitleSection = ({ place }: Props) => {
+  let [fontsLoaded] = useFonts({
+    Inter_400Regular,
+    Inter_700Bold,
+  });
+
+  if (!fontsLoaded) return null;
+
   return (
     <View style={styles.titleContainer}>
-      <Text style={styles.titleText}>{place?.name}</Text>
+      <Text style={[styles.titleText, { fontFamily: "Inter_700Bold" }]}>
+        {place?.name}
+      </Text>
       <View style={styles.locationContainer}>
         <Feather name="map-pin" size={20} color="gray" />
-        <Text style={styles.locationText}>{place.location.title}</Text>
+        <Text style={[styles.locationText, { fontFamily: "Inter_400Regular" }]}>
+          {place.location.title}
+        </Text>
       </View>
     </View>
   );
@@ -23,11 +38,9 @@ export const TitleSection = ({ place }: Props) => {
 const styles = StyleSheet.create({
   titleContainer: {
     paddingBottom: 10,
-    fontFamily: "Inter_700Bold",
   },
   titleText: {
-    fontWeight: "bold",
-    fontSize: 15,
+    fontSize: 20,
     color: colors.Black,
   },
   locationContainer: {
@@ -37,7 +50,7 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   locationText: {
-    fontFamily: "Inter_400Regular",
+    flex: 1,
     color: colors.LocationTextColor,
   },
 });

@@ -9,6 +9,9 @@ import {
   View,
 } from "react-native";
 
+import { Inter_700Bold } from "@expo-google-fonts/inter/700Bold";
+import { useFonts } from "@expo-google-fonts/inter/useFonts";
+
 interface Props {
   uri: string;
 }
@@ -20,11 +23,19 @@ export const ExternalLinkButton = ({ uri }: Props) => {
     if (supported) await Linking.openURL(uri);
   }, [uri]);
 
+  let [fontsLoaded] = useFonts({
+    Inter_700Bold,
+  });
+
+  if (!fontsLoaded) return null;
+
   return (
     <TouchableOpacity activeOpacity={0.5} onPress={handlePress}>
       <View style={styles.externalLinkButton}>
         <EvilIcons name="external-link" size={26} color="black" />
-        <Text style={styles.externalLinkText}>
+        <Text
+          style={[styles.externalLinkText, { fontFamily: "Inter_700Bold" }]}
+        >
           Visitar el sitio web oficial
         </Text>
       </View>
@@ -46,8 +57,7 @@ const styles = StyleSheet.create({
   externalLinkText: {
     paddingTop: 3,
     textAlign: "center",
-    fontWeight: "bold",
-    fontFamily: "Inter_700Bold",
+    fontSize: 14,
     color: colors.Black,
   },
 });

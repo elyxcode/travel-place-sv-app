@@ -1,6 +1,9 @@
 import { colors } from "@/styles/colors";
 import { StyleProp, StyleSheet, Text, View, ViewStyle } from "react-native";
 
+import { Inter_700Bold } from "@expo-google-fonts/inter/700Bold";
+import { useFonts } from "@expo-google-fonts/inter/useFonts";
+
 interface Props {
   category: string;
   extraStyles?: StyleProp<ViewStyle>;
@@ -12,6 +15,12 @@ export const CategoryTag = ({
   extraStyles,
   positionOposition = false,
 }: Props) => {
+  let [fontsLoaded] = useFonts({
+    Inter_700Bold,
+  });
+
+  if (!fontsLoaded) return null;
+
   return (
     <View
       style={[
@@ -19,7 +28,9 @@ export const CategoryTag = ({
         extraStyles,
       ]}
     >
-      <Text style={styles.text}>{category}</Text>
+      <Text style={[styles.text, { fontFamily: "Inter_700Bold" }]}>
+        {category}
+      </Text>
     </View>
   );
 };
@@ -46,8 +57,7 @@ const styles = StyleSheet.create({
     zIndex: 9999,
   },
   text: {
+    width: "100%",
     color: colors.Black,
-    fontFamily: "Inter_500Medium",
-    fontWeight: "bold",
   },
 });

@@ -31,7 +31,7 @@ extensions.configure(com.facebook.react.ReactSettingsExtension) { ex ->
 }
 expoAutolinking.useExpoModules()
 
-rootProject.name = 'travel-place-sv-app'
+rootProject.name = 'SLV Travel'
 
 expoAutolinking.useExpoVersionCatalog()
 

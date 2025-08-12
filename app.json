@@ -1,21 +1,18 @@
 {
   "expo": {
-    "name": "travel-place-sv-app",
-    "slug": "travel-place-sv-app",
+    "name": "SLV Travel",
+    "slug": "slv-travel",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/ic_launcher.png",
     "scheme": "travelplacesvapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.elyxdev.travelplacesvapp"
     },
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      },
       "edgeToEdgeEnabled": true,
       "package": "com.elyxdev.travelplacesvapp"
     },
@@ -29,10 +26,9 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "image": "./assets/images/ic_launcher.png",
+          "backgroundColor": "#0085ff",
+          "imageWidth": 200
         }
       ],
       "expo-font"

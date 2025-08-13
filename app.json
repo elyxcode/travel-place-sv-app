@@ -14,7 +14,8 @@
     },
     "android": {
       "edgeToEdgeEnabled": true,
-      "package": "com.elyxdev.travelplacesvapp"
+      "package": "com.elyxdev.travelplacesvapp",
+      "googleServicesFile": "./google-services.json"
     },
     "web": {
       "bundler": "metro",
@@ -22,6 +23,7 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
+      "@react-native-firebase/app",
       "expo-router",
       [
         "expo-splash-screen",

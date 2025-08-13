@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "898563890686",
+    "project_id": "news-app-62d5b",
+    "storage_bucket": "news-app-62d5b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:898563890686:android:9a91a2e9106efca7ef74af",
+        "android_client_info": {
+          "package_name": "com.elyxdev.travelplacesvapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEkX-zJC7QDc06wqqTl4MVyX8CrEzF5OE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

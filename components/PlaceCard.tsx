@@ -21,7 +21,7 @@ export const PlaceCard = ({ place }: Props) => {
       onPress={() =>
         router.navigate({
           pathname: "/places/[placeId]",
-          params: { placeId: place.name },
+          params: { placeId: place.id },
         })
       }
     >
@@ -40,7 +40,10 @@ export const PlaceCard = ({ place }: Props) => {
             <Image source={placeholderImagePath} style={styles.image} />
           )}
 
-          <DecriptionCard name={place.name} description={place.description} />
+          <DecriptionCard
+            name={place.name}
+            description={place.briefDescription}
+          />
         </View>
       </View>
     </Pressable>

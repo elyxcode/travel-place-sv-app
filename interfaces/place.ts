@@ -3,19 +3,20 @@ export interface PlaceResponse {
 }
 
 export interface Place {
-    // id: number|string;
-    name:         string;
-    description:  string;
-    category:     string;
-    location:     Location;
-    images:       string[];
-    externalLink: string|null;
-    payRequired:  boolean;
-    initialPrice: string|number;
+    id:                 string;
+    name:               string;
+    description:        string;
+    briefDescription:   string;
+    category:           string;
+    location:           Location;
+    images:             string[];
+    externalLink:       string|null;
+    payRequired:        boolean;
+    initialPrice:       string;
 }
 
 export interface Location {
-    title: string;
+    address: string;
     lat: number;
     lng: number;
 }

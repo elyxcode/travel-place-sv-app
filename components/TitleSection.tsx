@@ -28,7 +28,7 @@ export const TitleSection = ({ place }: Props) => {
       <View style={styles.locationContainer}>
         <Feather name="map-pin" size={20} color="gray" />
         <Text style={[styles.locationText, { fontFamily: "Inter_400Regular" }]}>
-          {place.location.title}
+          {place.location.address}
         </Text>
       </View>
     </View>

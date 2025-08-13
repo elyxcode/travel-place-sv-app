@@ -1,6 +1,7 @@
 import { colors } from "@/styles/colors";
 import { StyleProp, StyleSheet, Text, View, ViewStyle } from "react-native";
 
+import { capitalize } from "@/utils/capitalize";
 import { Inter_700Bold } from "@expo-google-fonts/inter/700Bold";
 import { useFonts } from "@expo-google-fonts/inter/useFonts";
 
@@ -29,7 +30,7 @@ export const CategoryTag = ({
       ]}
     >
       <Text style={[styles.text, { fontFamily: "Inter_700Bold" }]}>
-        {category}
+        {capitalize(category)}
       </Text>
     </View>
   );

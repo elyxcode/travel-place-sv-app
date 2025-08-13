@@ -1,12 +1,12 @@
 import { FlatList, SafeAreaView, StyleSheet, View } from "react-native";
 
 import { HeaderList } from "@/components/HeaderList";
+import LoadingComponent from "@/components/LoadingComponent";
 import { PlaceCard } from "@/components/PlaceCard";
-import { places } from "@/data/data";
+import { usePlaces } from "@/hooks/usePlace";
 import { useStore } from "@/store";
 import { colors } from "@/styles/colors";
-import { useEffect, useState } from "react";
-import LoadingComponent from "../components/LoadingComponent";
+import { useEffect } from "react";
 
 const Separator = () => {
   return <View style={styles.separator} />;
@@ -17,24 +17,20 @@ const Footer = () => {
 };
 
 export default function Index() {
-  const { Places, AddPlaces } = useStore();
-  const [isLoading, setIsLoading] = useState(false);
+  const { data, loading } = usePlaces();
+  const { AddPlaces } = useStore();
 
   useEffect(() => {
-    setIsLoading(true);
+    AddPlaces(data);
+  }, [AddPlaces, data]);
 
-    AddPlaces(places);
-
-    setIsLoading(false);
-  }, [isLoading, AddPlaces]);
-
-  if (isLoading) return <LoadingComponent />;
+  if (loading) return <LoadingComponent />;
 
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
         style={styles.list}
-        data={Places}
+        data={data}
         renderItem={({ item }) => <PlaceCard place={item} />}
         keyExtractor={(item) => item.name}
         ItemSeparatorComponent={Separator}

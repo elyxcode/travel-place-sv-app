@@ -1,28 +1,29 @@
 import { useLocalSearchParams } from "expo-router";
 import { useEffect, useRef } from "react";
-import { Animated, ScrollView, StyleSheet, View } from "react-native";
+import {
+  Animated,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  View,
+} from "react-native";
 
 import { ExternalLinkButton } from "@/components/ExternalLinkButton";
 import { GallerySection } from "@/components/GallerySection";
 
 import { Place } from "@/interfaces/place";
 
-import { places } from "@/data/data";
-
 import { DescriptionSection } from "@/components/DescriptionSection";
 import { HeaderImageSection } from "@/components/HeaderImageSection";
 import { TitleSection } from "@/components/TitleSection";
-
-const images = [
-  "https://images.pexels.com/photos/13268478/pexels-photo-13268478.jpeg",
-  "https://images.pexels.com/photos/270408/pexels-photo-270408.jpeg",
-  "https://images.pexels.com/photos/1024864/pexels-photo-1024864.jpeg",
-];
+import { useStore } from "@/store";
 
 export default function PlaceDetails() {
   const { placeId } = useLocalSearchParams<{
     placeId: string;
   }>();
+
+  const { Places } = useStore();
 
   const fadeAnim = useRef(new Animated.Value(0)).current;
 
@@ -34,33 +35,42 @@ export default function PlaceDetails() {
     }).start();
   });
 
-  const place: Place | undefined = places.find((p) => p.name === placeId);
+  const place: Place | undefined = Places.find((p) => p.id === placeId);
 
   return (
     <Animated.View style={{ flex: 1, opacity: fadeAnim }}>
-      <ScrollView style={styles.container}>
-        <HeaderImageSection place={place!} />
-        <View style={styles.placeDataContainer}>
-          <TitleSection place={place!} />
-          <DescriptionSection place={place} />
-          <GallerySection images={images} />
-          {place?.externalLink && (
-            <ExternalLinkButton uri={place?.externalLink} />
-          )}
-        </View>
-      </ScrollView>
+      <SafeAreaView style={styles.safeContainer}>
+        <ScrollView
+          style={styles.container}
+          showsVerticalScrollIndicator={false}
+        >
+          <HeaderImageSection place={place!} />
+          <View style={styles.placeDataContainer}>
+            <TitleSection place={place!} />
+            <DescriptionSection place={place} />
+            <GallerySection images={place?.images ?? []} />
+            {place?.externalLink && (
+              <ExternalLinkButton uri={place?.externalLink} />
+            )}
+          </View>
+        </ScrollView>
+      </SafeAreaView>
     </Animated.View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  safeContainer: {
     flex: 1,
+  },
+  container: {
+    flexGrow: 1,
     paddingVertical: 25,
   },
 
   placeDataContainer: {
     paddingTop: 15,
     paddingHorizontal: 15,
+    paddingBottom: 75,
   },
 });

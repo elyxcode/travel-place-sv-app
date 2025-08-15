@@ -1,5 +1,6 @@
 import { FlatList, SafeAreaView, StyleSheet, View } from "react-native";
 
+import { EmptyList } from "@/components/EmptyList";
 import { HeaderList } from "@/components/HeaderList";
 import LoadingComponent from "@/components/LoadingComponent";
 import { PlaceCard } from "@/components/PlaceCard";
@@ -26,11 +27,14 @@ export default function Index() {
 
   if (loading) return <LoadingComponent />;
 
+  if (!data) return <EmptyList />;
+
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
         style={styles.list}
         data={data}
+        ListEmptyComponent={<EmptyList />}
         renderItem={({ item }) => <PlaceCard place={item} />}
         keyExtractor={(item) => item.name}
         ItemSeparatorComponent={Separator}

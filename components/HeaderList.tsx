@@ -1,8 +1,9 @@
 import { Inter_800ExtraBold } from "@expo-google-fonts/inter/800ExtraBold";
 import { Inter_900Black } from "@expo-google-fonts/inter/900Black";
 import { useFonts } from "@expo-google-fonts/inter/useFonts";
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { router } from "expo-router";
+import { Pressable, StyleSheet, Text } from "react-native";
 
 export const HeaderList = () => {
   let [fontsLoaded] = useFonts({
@@ -13,11 +14,17 @@ export const HeaderList = () => {
   if (!fontsLoaded) return null;
 
   return (
-    <View style={styles.headerContainer}>
+    <Pressable
+      style={styles.headerContainer}
+      onPress={() => {
+        router.navigate("/settings");
+      }}
+    >
       <Text style={[styles.HeaderText, { fontFamily: "Inter_800ExtraBold" }]}>
         Sitios Para Visitar{" "}
       </Text>
-    </View>
+      <FontAwesome name="gear" size={26} color="black" />
+    </Pressable>
   );
 };
 
@@ -27,9 +34,12 @@ const styles = StyleSheet.create({
     paddingLeft: 5,
     height: 50,
     marginBottom: 8,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
   HeaderText: {
     paddingTop: 5,
-    fontSize: 28,
+    fontSize: 25,
   },
 });

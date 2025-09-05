@@ -1,8 +1,7 @@
-import { Image, Pressable, StyleSheet, View } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 
 import { Place } from "@/interfaces/place";
 import { colors } from "@/styles/colors";
-import { router } from "expo-router";
 import { useState } from "react";
 import { CategoryTag } from "./CategoryTag";
 import { DecriptionCard } from "./DecriptionCard";
@@ -17,36 +16,27 @@ export const PlaceCard = ({ place }: Props) => {
   const [errorImage, setErrorImage] = useState(false);
 
   return (
-    <Pressable
-      onPress={() =>
-        router.navigate({
-          pathname: "/places/[placeId]",
-          params: { placeId: place.id },
-        })
-      }
-    >
-      <View style={styles.cardShadow}>
-        <View style={styles.cardContainer}>
-          <CategoryTag category={place.category} />
-          {!errorImage ? (
-            <Image
-              source={{
-                uri: place.images[0],
-              }}
-              onError={() => setErrorImage(true)}
-              style={styles.image}
-            />
-          ) : (
-            <Image source={placeholderImagePath} style={styles.image} />
-          )}
-
-          <DecriptionCard
-            name={place.name}
-            description={place.briefDescription}
+    <View style={styles.cardShadow}>
+      <View style={styles.cardContainer}>
+        <CategoryTag category={place.category} />
+        {!errorImage ? (
+          <Image
+            source={{
+              uri: place.images[0],
+            }}
+            onError={() => setErrorImage(true)}
+            style={styles.image}
           />
-        </View>
+        ) : (
+          <Image source={placeholderImagePath} style={styles.image} />
+        )}
+
+        <DecriptionCard
+          name={place.name}
+          description={place.briefDescription}
+        />
       </View>
-    </Pressable>
+    </View>
   );
 };
 

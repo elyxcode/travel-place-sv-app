@@ -15,10 +15,13 @@ import { Place } from "@/interfaces/place";
 
 import { DescriptionSection } from "@/components/DescriptionSection";
 import { HeaderImageSection } from "@/components/HeaderImageSection";
+import { NativeAdComponent } from "@/components/NativeAdComponent";
 import { TitleSection } from "@/components/TitleSection";
 import { useStore } from "@/store";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function PlaceDetails() {
+  const insets = useSafeAreaInsets();
   const { placeId } = useLocalSearchParams<{
     placeId: string;
   }>();
@@ -39,7 +42,9 @@ export default function PlaceDetails() {
 
   return (
     <Animated.View style={{ flex: 1, opacity: fadeAnim }}>
-      <SafeAreaView style={styles.safeContainer}>
+      <SafeAreaView
+        style={[styles.safeContainer, { paddingBottom: insets.bottom }]}
+      >
         <ScrollView
           style={styles.container}
           showsVerticalScrollIndicator={false}
@@ -48,6 +53,7 @@ export default function PlaceDetails() {
           <View style={styles.placeDataContainer}>
             <TitleSection place={place!} />
             <DescriptionSection place={place} />
+            <NativeAdComponent />
             <GallerySection images={place?.images ?? []} />
             {place?.externalLink && (
               <ExternalLinkButton uri={place?.externalLink} />
@@ -71,6 +77,6 @@ const styles = StyleSheet.create({
   placeDataContainer: {
     paddingTop: 15,
     paddingHorizontal: 15,
-    paddingBottom: 75,
+    paddingBottom: 70,
   },
 });

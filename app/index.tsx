@@ -13,6 +13,7 @@ import LoadingComponent from "@/components/LoadingComponent";
 import { NativeAdComponent } from "@/components/NativeAdComponent";
 import { PlaceCard } from "@/components/PlaceCard";
 import { SeparatorListComponent } from "@/components/SeparatorListComponent";
+import config from "@/config";
 import { usePlaces } from "@/hooks/usePlace";
 import { Place } from "@/interfaces/place";
 import { useStore } from "@/store";
@@ -28,9 +29,12 @@ import {
 } from "react-native-google-mobile-ads";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-const interstitial = InterstitialAd.createForAdRequest(TestIds.INTERSTITIAL, {
-  requestNonPersonalizedAdsOnly: true,
-});
+const interstitial = InterstitialAd.createForAdRequest(
+  __DEV__ ? TestIds.INTERSTITIAL : config.ADMOD_ADUNITID,
+  {
+    requestNonPersonalizedAdsOnly: true,
+  }
+);
 
 export default function Index() {
   const insets = useSafeAreaInsets();
@@ -138,7 +142,7 @@ export default function Index() {
       />
       <View>
         <BannerAd
-          unitId={TestIds.BANNER}
+          unitId={__DEV__ ? TestIds.BANNER : config.ADMOD_ADUNITID}
           size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
           requestOptions={{
             requestNonPersonalizedAdsOnly: true,

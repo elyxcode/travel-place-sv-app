@@ -1,3 +1,4 @@
+import config from "@/config";
 import React, { useEffect, useState } from "react";
 import { Image, Text } from "react-native";
 import {
@@ -10,7 +11,9 @@ export const NativeAdComponent = () => {
   const [nativeAd, setNativeAd] = useState<NativeAd>();
 
   useEffect(() => {
-    NativeAd.createForAdRequest(TestIds.NATIVE)
+    NativeAd.createForAdRequest(
+      __DEV__ ? TestIds.NATIVE : config.ADMOD_ADUNITID
+    )
       .then(setNativeAd)
       .catch(console.error);
   }, []);

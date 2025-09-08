@@ -56,7 +56,10 @@ export default function PlaceDetails() {
             <NativeAdComponent />
             <GallerySection images={place?.images ?? []} />
             {place?.externalLink && (
-              <ExternalLinkButton uri={place?.externalLink} />
+              <ExternalLinkButton
+                uri={place?.externalLink}
+                name="Visitar el sitio web oficial"
+              />
             )}
           </View>
         </ScrollView>

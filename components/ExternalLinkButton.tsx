@@ -14,9 +14,10 @@ import { useFonts } from "@expo-google-fonts/inter/useFonts";
 
 interface Props {
   uri: string;
+  name: string;
 }
 
-export const ExternalLinkButton = ({ uri }: Props) => {
+export const ExternalLinkButton = ({ uri, name }: Props) => {
   const handlePress = useCallback(async () => {
     const supported = await Linking.canOpenURL(uri);
 
@@ -36,7 +37,7 @@ export const ExternalLinkButton = ({ uri }: Props) => {
         <Text
           style={[styles.externalLinkText, { fontFamily: "Inter_700Bold" }]}
         >
-          Visitar el sitio web oficial
+          {name}
         </Text>
       </View>
     </TouchableOpacity>

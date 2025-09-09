@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { placeholderImagePath } from "./PlaceCard";
 
 interface Props {
   images?: string[];
@@ -19,9 +20,25 @@ export const GalleryImages = ({ images }: Props) => {
   const Separator = () => <View style={{ width: 10 }} />;
 
   const ShowImageComponent = ({ uri }: { uri: string }) => {
+    const [errorImage, setErrorImage] = useState(false);
     return (
-      <TouchableOpacity activeOpacity={0.6} onPress={() => setSelectImage(uri)}>
-        <Image source={{ uri }} style={styles.image} />
+      <TouchableOpacity
+        activeOpacity={0.6}
+        onPress={() => {
+          if (!errorImage) {
+            setSelectImage(uri);
+          }
+        }}
+      >
+        {!errorImage ? (
+          <Image
+            source={{ uri }}
+            style={styles.image}
+            onError={() => setErrorImage(true)}
+          />
+        ) : (
+          <Image source={placeholderImagePath} style={styles.image} />
+        )}
       </TouchableOpacity>
     );
   };

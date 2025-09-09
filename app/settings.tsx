@@ -1,5 +1,6 @@
 import { BackButton } from "@/components/BackButton";
 import { ExternalLinkButton } from "@/components/ExternalLinkButton";
+import { policyUri } from "@/constants/resources";
 import React from "react";
 import { SafeAreaView, StyleSheet, View } from "react-native";
 
@@ -8,8 +9,7 @@ export default function Settings() {
     <SafeAreaView style={styles.container}>
       <BackButton />
       <View style={styles.containerLink}>
-        <ExternalLinkButton uri="" name="Terminos y condiciones" />
-        <ExternalLinkButton uri="" name="Terminos de privacidad" />
+        <ExternalLinkButton uri={policyUri} name="Politicas de privacidad" />
       </View>
     </SafeAreaView>
   );

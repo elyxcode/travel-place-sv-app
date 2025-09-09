@@ -1,0 +1,1 @@
+export const policyUri = "https://turismoslvapp.blogspot.com/2025/09/politicas-de-privacidad-politica-de.html"

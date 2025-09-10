@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "SLV Travel",
-    "slug": "slv-travel",
+    "name": "Pulgarcito Trip",
+    "slug": "pulgarcito-trip",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/ic_launcher.png",

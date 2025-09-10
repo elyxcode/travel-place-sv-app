@@ -16,7 +16,7 @@ import { SeparatorListComponent } from "@/components/SeparatorListComponent";
 import config from "@/config";
 import { usePlaces } from "@/hooks/usePlace";
 import { Place } from "@/interfaces/place";
-// import { useStore } from "@/store";
+import { useStore } from "@/store";
 import { colors } from "@/styles/colors";
 import { router } from "expo-router";
 import { useEffect, useState } from "react";
@@ -38,16 +38,16 @@ const interstitial = InterstitialAd.createForAdRequest(
 
 export default function Index() {
   const insets = useSafeAreaInsets();
-  // const { AddPlaces } = useStore();
+  const { AddPlaces } = useStore();
   const { data, loading } = usePlaces();
 
   const [adLoaded, setAdLoaded] = useState(false);
   const [visitCount, setVisitCount] = useState(0);
 
-  // uso de zunstand para otra feature de la app.
-  // useEffect(() => {
-  //   AddPlaces(data);
-  // }, [AddPlaces, data]);
+  //uso de zunstand para otra feature de la app.
+  useEffect(() => {
+    AddPlaces(data);
+  }, [AddPlaces, data]);
 
   useEffect(() => {
     // Listener para cuando el anuncio esté cargado

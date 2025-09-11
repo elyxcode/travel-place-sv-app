@@ -5,4 +5,5 @@ export const colors = {
     DescriptionColor: '#808080',
     LocationTextColor: '#808080',
     externalBorderButton: '#C4C4C4',
+    graySemiTransparent: '#00000080'
 }

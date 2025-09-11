@@ -30,7 +30,7 @@ import mobileAds, {
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const interstitial = InterstitialAd.createForAdRequest(
-  __DEV__ ? TestIds.INTERSTITIAL : "ca-app-pub-3887333312020428~1246664603",
+  __DEV__ ? TestIds.INTERSTITIAL : config.ADMOD_ADUNITID_INTERSTICIAL,
   {
     requestNonPersonalizedAdsOnly: true,
   }
@@ -151,7 +151,7 @@ export default function Index() {
       />
       <View>
         <BannerAd
-          unitId={__DEV__ ? TestIds.BANNER : config.ADMOD_ADUNITID}
+          unitId={__DEV__ ? TestIds.BANNER : config.ADMOD_ADUNITID_BANNER}
           size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
           requestOptions={{
             requestNonPersonalizedAdsOnly: true,
@@ -167,7 +167,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.White,
   },
-
   list: {
     flex: 1,
     paddingHorizontal: 20,

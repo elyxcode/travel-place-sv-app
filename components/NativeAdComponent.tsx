@@ -12,7 +12,7 @@ export const NativeAdComponent = () => {
 
   useEffect(() => {
     NativeAd.createForAdRequest(
-      __DEV__ ? TestIds.NATIVE : config.ADMOD_ADUNITID
+      __DEV__ ? TestIds.NATIVE : config.ADMOD_ADUNITID_NATIVE
     )
       .then(setNativeAd)
       .catch(console.error);

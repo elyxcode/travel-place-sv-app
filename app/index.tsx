@@ -20,7 +20,7 @@ import { useStore } from "@/store";
 import { colors } from "@/styles/colors";
 import { router } from "expo-router";
 import { useEffect, useState } from "react";
-import {
+import mobileAds, {
   AdEventType,
   BannerAd,
   BannerAdSize,
@@ -30,7 +30,7 @@ import {
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const interstitial = InterstitialAd.createForAdRequest(
-  __DEV__ ? TestIds.INTERSTITIAL : config.ADMOD_ADUNITID,
+  __DEV__ ? TestIds.INTERSTITIAL : "ca-app-pub-3887333312020428~1246664603",
   {
     requestNonPersonalizedAdsOnly: true,
   }
@@ -48,6 +48,14 @@ export default function Index() {
   useEffect(() => {
     AddPlaces(data);
   }, [AddPlaces, data]);
+
+  useEffect(() => {
+    mobileAds()
+      .initialize()
+      .then((adapterStatuses) => {
+        // Initialization complete!
+      });
+  }, []);
 
   useEffect(() => {
     // Listener para cuando el anuncio esté cargado
